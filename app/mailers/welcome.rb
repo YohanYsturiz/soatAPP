@@ -5,7 +5,9 @@ class Welcome < ApplicationMailer
   #
   #   en.welcome.notify.subject
   #
-  def notify
-    mail to: 'yohanysturiz@gmail.com', subject: 'Bienvenido!'
+  def notify(email_user,datos_coche,descripcion_poliza)
+    @datos_coche = datos_coche
+    @descripcion_poliza = descripcion_poliza
+    mail to: email_user, subject: 'Poliza soat Adquirida, Gracias!'
   end
 end

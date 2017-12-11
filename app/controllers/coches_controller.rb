@@ -59,8 +59,8 @@ class CochesController < ApplicationController
 
     respond_to do |format|
       if @coche.save
-    
-        Welcome.notify().deliver_now
+        @descripcion_poliza = Rate.joins(:classification).find_by(classification_id: params[:clase])
+        Welcome.notify(current_user.email,@coche,@descripcion_poliza).deliver_now
          
         format.html { redirect_to @coche, notice: 'Coche was successfully created.' }
         format.json { render :show, status: :created, location: @coche }
@@ -100,6 +100,7 @@ class CochesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_coche
       @coche = Coche.find(params[:id])
+      @descripcion_poliza_valor = Rate.find_by(classification_id: params[:clase])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

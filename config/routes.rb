@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   
   get 'coche/index'
 
+  get "subtipo_type/:clase/subtipo" => "application#subtipos", :as => "subtipo", :format => :json
+
+
 
   # get 'main/home'
   # ruta que inicia por defecto cuando se inicia el servidor 

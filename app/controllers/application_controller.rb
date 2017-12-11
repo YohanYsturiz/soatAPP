@@ -8,6 +8,14 @@ class ApplicationController < ActionController::Base
   def set_layout
     "landing"
   end
+
+
+  def subtipos
+    tipo_subtipo = Rate.joins(:classification, :typeclassification).find_by(classification_id: params[:clase])
+    respond_to do |format|
+    format.json { render :json => tipo_subtipo.typeclassification }
+    end
+  end
   
 
   before_filter :configure_permitted_parameters, if: :devise_controller?

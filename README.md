@@ -1,24 +1,12 @@
+Sistema para el registro de polizas SOAT,
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+Aplicacion desarrollada como prueba. 
 
+Para la instalación de la aplicación debe instalar RubyOnRails. 
 
-Welcome to your Rails project on Cloud9 IDE!
+1) Instalar RubyOnRails 4 
+2) Ejecutar bundle install 
+3) luego ejecutar la migracion , comando: rake db.migrate. 
+4) por ultimo ejecutar rails s , para iniciar el servidor. 
 
-To get started, just do the following:
-
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
-
-Happy coding!
-The Cloud9 IDE team
-
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+La app posee como base de datos: SQLite y para el Frontend Bootstrap 4. 

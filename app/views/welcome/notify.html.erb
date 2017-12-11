@@ -1,3 +1,21 @@
-<p>
- Hola Bienvenido
-</p>
+<p>Hola Bienvenido estos son los datos de la poliza adquirida: </p>
+ 
+     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"># Placa </th>
+          <th scope="col">Nombre propietario</th>
+          <th scope="col">Clase</th>
+          <th scope="col">Valor de la Poliza</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @datos_coche.placa %></th>
+          <th><%= @datos_coche.propietario %></th>
+          <th><%= @descripcion_poliza.classification.descripcion %></th>
+          <th><%= @descripcion_poliza.total %></th>
+        </tr>
+      </tbody>
+    </table>
+

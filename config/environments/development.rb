@@ -15,19 +15,29 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { :host => "soat-prueba-yohanysturiz.c9users.io" }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
-  ActionMailer::Base.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: "soat-prueba-yohanysturiz.c9users.io",
-    auth: "plain",
-    enable_starttls_auto: true,
-    user_name: ENV["yohanysturiz@gmail.com"],
-    password: ENV["yohanysturiz24672859"],
-    :openssl_verify_mode  => 'none'
-  }
+  #ActionMailer::Base.smtp_settings = {
+    #address: "smtp.gmail.com",
+    #port: 587,
+    #domain: "soat-prueba-yohanysturiz.c9users.io",
+    #auth: "plain",
+    #enable_starttls_auto: true,
+    #user_name: ENV["yohanysturiz@gmail.com"],
+    #password: ENV["yohanysturiz24672859"],
+    #:openssl_verify_mode  => 'none'
+  #}
 
+  # Gmail SMTP server setup
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :enable_starttls_auto => true,
+    :port => 587,
+    :authentication => :plain,
+    :user_name => "yohanysturiz@gmail.com",
+    :password => 'yohanysturiz24672859'
+  }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

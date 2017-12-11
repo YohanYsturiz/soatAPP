@@ -19,8 +19,8 @@
 
 function cotiza() {
     
-    var clase = document.getElementById('coche_clase').value
-    var subtipo = document.getElementById('coche_subtipo').value
+    var clase = document.getElementById('clase').value
+    var subtipo = document.getElementById('subtipo').value
     
     window.open('/rates/cotizacion?clase=' + clase + "&subtipo=" + subtipo ,'nueva','top=100,left=100,width=400,height=300,status=yes,scrollbars=yes')
 
