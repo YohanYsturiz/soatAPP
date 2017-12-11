@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th scope="col">clasificacion</th>
+          <th scope="col">sub-clasificacion</th>
+          <th scope="col">Tasa Comercial</th>
+          <th scope="col">Valor de Prima</th>
+          <th scope="col">Contribucion</th>
+          <th scope="col">subtotal</th>
+          <th scope="col">runt</th>
+          <th scope="col">total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @rate.classification.descripcion %></th>
+          <th scope="row"><%= @rate.typeclassification.descripcion %></th>
+          <th scope="row"><%= @rate.tasa_comercial %></th>
+          <th scope="row"><%= @rate.value_prima %></th>
+          <th scope="row"><%= @rate.contribucion %></th>
+          <th scope="row"><%= @rate.subtotal %></th>
+          <th scope="row"><%= @rate.runt %></th>
+          <th scope="row"><%= @rate.total %></th>
+        </tr>
+      </tbody>
+    </table>
+
+
+<%#= link_to 'Edit', edit_coch_path(@rate) %>

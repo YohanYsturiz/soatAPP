@@ -1,0 +1,53 @@
+<%= form_for(@vehiculo) do |f| %>
+  <% if @vehiculo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vehiculo.errors.count, "error") %> prohibited this vehiculo from being saved:</h2>
+
+      <ul>
+      <% @vehiculo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :placa %><br>
+    <%= f.text_field :placa %>
+  </div>
+  <div class="field">
+    <%= f.label :clase %><br>
+    <%= f.text_field :clase %>
+  </div>
+  <div class="field">
+    <%= f.label :subtipo %><br>
+    <%= f.number_field :subtipo %>
+  </div>
+  <div class="field">
+    <%= f.label :edad %><br>
+    <%= f.number_field :edad %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_pasajero %><br>
+    <%= f.number_field :numero_pasajero %>
+  </div>
+  <div class="field">
+    <%= f.label :cilindraje %><br>
+    <%= f.number_field :cilindraje %>
+  </div>
+  <div class="field">
+    <%= f.label :toneladas %><br>
+    <%= f.number_field :toneladas %>
+  </div>
+  <div class="field">
+    <%= f.label :propietario %><br>
+    <%= f.text_field :propietario %>
+  </div>
+  <div class="field">
+    <%= f.label :poliza %><br>
+    <%= f.text_field :poliza %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

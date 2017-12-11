@@ -1,0 +1,2 @@
+module CochesHelper
+end

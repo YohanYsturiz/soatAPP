@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+<div class="col-md-12 col-sm-12 col-xs-12 justify-content-md-center">
+<h4>Polizas Disponibles</h4>
+  <table class="table table-condensed table-hover">
+    <thead>
+      <tr class="table-primary">
+        <th>Codigo</th>
+        <th>Clase de Vehiculo</th>
+        <th>Subtipo</th>
+        <th>Tasa Comercial</th>
+        <th>Valor Prima</th>
+        <th>Contribucion</th>
+        <th>SubTotal</th>
+        <th>Tasa Runt</th>
+        <th>Total a Pagar</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <% @rates.each do |rate| %>
+        <tr>
+            <th scope="row"><%= rate.id_rates %></th>
+            <th scope="row"><%= rate.classification.descripcion %></th>
+            <th scope="row"><%= rate.typeclassification.descripcion %></th>
+            <th scope="row"><%= rate.tasa_comercial %></th>
+            <th scope="row"><%= rate.value_prima %></th>
+            <th scope="row"><%= rate.contribucion %></th>
+            <th scope="row"><%= rate.subtotal %></th>
+            <th scope="row"><%= rate.runt %></th>
+            <th scope="row"><%= rate.total %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table> 
+<%= link_to 'Regresar', authenticated_root_path, class: "btn btn-primary" %>
+</div>

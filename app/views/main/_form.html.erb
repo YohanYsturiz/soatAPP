@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-md-10 col-sm-10 justify-content-md-center" style="padding-top: 5% !important;">
+    <div class="col-md-auto">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4>Consulte el serial de su vehiculo</h4>
+        </div>
+        <div class="card-body">
+          <%= form_tag({:controller => "coches", :action => "search_placa"}, :method => "post") do %>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Serial de la placa:</label>
+            <input type="text" class="form-control" name="placa" id="serial_placa" aria-describedby="serialHelp" placeholder="ejm: AVS458" maxlength="7" required>
+            <small id="serialHelp" class="form-text text-muted">Ingrese la placa del vehiculo a registrar.</small>
+          </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title></title>        
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>Resumen de Poliza</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Hola</th>
+                <th>prueba</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @coches.each do |coche| %>
+                <tr>
+                    <td><%= coche.placa %></td>
+                    <td><%= coche.clase %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</body>    
+</html>

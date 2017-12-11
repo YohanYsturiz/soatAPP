@@ -1,0 +1,75 @@
+<h2>Modificar Perfil: <%= current_user.nombre %></h2>
+
+<div class="container">
+  <div class="col-md-10 col-sm-10 justify-content-md-center">
+    <div class="col-md-auto">
+      <div class="card row ">
+        <div class="card-header bg-success text-white">
+          <h4>Complete su perfil</h4>
+        </div>
+        <div class="card-body">
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= devise_error_messages! %>
+            
+            <div class="field">
+              <%= f.label :cedula %>
+              <%= f.text_field :cedula, class: "form-control", autocomplete: "off" %>
+            </div>
+            
+            <div class="field">
+              <%= f.label :nombre %>
+              <%= f.text_field :nombre, class: "form-control", autocomplete: "off" %>
+            </div>
+            
+            <div class="field">
+              <%= f.label :apellido %>
+              <%= f.text_field :apellido, class: "form-control", autocomplete: "off" %>
+            </div>
+            
+            <div class="field">
+              <%= f.label :teléfono %>
+              <%= f.text_field :telefono, class: "form-control", autocomplete: "off" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :email %><br />
+              <%= f.email_field :email, autofocus: true, class: "form-control", :disabled => true %>
+            </div>
+          
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+            <% end %>
+          
+            <div class="field">
+              <%= f.label :password %> <i>(ingrese la nueva contraseña)</i><br />
+              <%= f.password_field :password, class: "form-control", autocomplete: "off" %>
+              <% if @minimum_password_length %>
+                <br />
+                <em><%= @minimum_password_length %> Caracteres Minimos</em>
+              <% end %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :confimar_contraseña %><br />
+              <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "off" %>
+            </div>
+          
+            <div class="field">
+              <%= f.label :contraseña_anterior %> <i>(coloque la contrasela anterior para realizar la modificacion)</i><br />
+              <%= f.password_field :current_password, class: "form-control", autocomplete: "off" %>
+            </div>
+            
+            <div class="actions">
+              <%= f.submit "Update" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p><%= button_to "Bloquear mi cuenta", registration_path(resource_name), data: { confirm: "¿Seguro que deseas cancelar tu cuenta?" }, method: :delete, class: "btn btn-success" %></p>
+
+<%= link_to "regresar", :back, class: "btn btn-success" %>
+

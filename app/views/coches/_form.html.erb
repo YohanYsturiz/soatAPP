@@ -1,0 +1,121 @@
+<div class="container">
+  <div class="col-md-10 col-sm-10 justify-content-md-center">
+    <div class="col-md-auto">
+      <div class="card row ">
+        <div class="card-header bg-success text-white">
+          <h4>Complete el formulario para el registro de su vehiculo</h4>
+        </div>
+        <div class="card-body">
+          <%= form_for(@coche) do |f| %>
+            <% if @coche.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@coche.errors.count, "error") %> prohibited this coch from being saved:</h2>
+          
+                <ul>
+                <% @coche.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <div class="form-group">
+              <%= f.label :placa %><br>
+              <%= f.text_field :placa, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :clase %><br>
+              <%= f.collection_select :clase, Classification.all, :id_classification, :descripcion, {prompt: "Seleccione una clase"}, {class: "form-control"} %>
+            </div>
+            <div class="form-group">
+              <%= f.label :subtipo %><br>
+              <%= f.collection_select :subtipo, Typeclassification.all, :id_type, :descripcion, {prompt: "seleccione una sub-clase"}, {class: "form-control"} %>
+            </div>
+            <%#= observe_field 'clase', :url => @options.merge(:controller => '/rates', :action => 'combo_subtipo'), :update => 'subtipo', :with => 'combo_clase_id' %> 
+            <div class="form-group">
+              <%= f.label :edad %><br>
+              <%= f.collection_select :edad, Age.all, :id_ages, :descripcion , {prompt: "Seleccione una edad"}, {class: "form-control"} %>
+            </div>
+            <div class="form-group">
+              <%= f.label :numero_pasajero %><br>
+              <%= f.number_field :numero_pasajero, class: "form-control" %>
+            </div>
+            <div class="form-group" style="float: right !important;">
+                <a href="#" onclick="cotiza();" class="btn btn-success">Cotizacion</a>
+            </div>
+            <div class="form-group">
+              <%= f.label :cilindraje %><br>
+              <%= f.number_field :cilindraje, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :toneladas %><br>
+              <%= f.number_field :toneladas, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :propietario %><br>
+              <%= f.text_field :propietario, class: "form-control" %>
+            </div>
+            <div class="field">
+              <%= f.label :poliza %><br>
+              <%= f.text_field :poliza, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%#= f.label :users_id %><br>
+              <%= f.hidden_field :users_id, :value =>  current_user.id,  class: "form-control" %>
+            </div>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+              Pagar poliza
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ingrese los siguientes datos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="numero_tarjeta">Numero tarjeta credito:</label>
+                      <input type="number" class="form-control" name="numero_tarjeta" id="numero_tarjeta" maxlength="7" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="nombre_titular">Nombre Titular:</label>
+                      <input type="text" class="form-control" name="nombre_titular" id="nombre_titular" maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="fecha_vencimiento">Fecha Vencimiento:</label>
+                      <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" maxlength="7" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="codigo_seguridad">Codigo Seguridad (CVV):</label>
+                      <input type="number" class="form-control" name="codigo_seguridad" id="codigo_seguridad" maxlength="7" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="cuotas">Numero de Cuotas:</label>
+                      <input type="number" class="form-control" name="cuotas" id="cuotas" maxlength="7" required>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    <%= f.submit "Guardar", class: "btn btn-success" %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <%#= f.submit "Guardar", class: "btn btn-success" %>
+            </div>
+            <div class="form-group">
+              <%#= link_to "Cotización", {:controller => "rates", :action => "cotizacion"}, :method => "post") , class: "navbar-brand"  %>
+              <%#= link_to 'Cotizacion', {:controller => 'rates', :action => 'cotizacion', :clase => "1"}, method: 'post', :class=>'link_styling', class: "btn btn-success", :onclick => 'cotiza();'  %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

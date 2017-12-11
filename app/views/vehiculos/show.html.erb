@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Placa:</strong>
+  <%= @vehiculo.placa %>
+</p>
+
+<p>
+  <strong>Clase:</strong>
+  <%= @vehiculo.clase %>
+</p>
+
+<p>
+  <strong>Subtipo:</strong>
+  <%= @vehiculo.subtipo %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @vehiculo.edad %>
+</p>
+
+<p>
+  <strong>Numero pasajero:</strong>
+  <%= @vehiculo.numero_pasajero %>
+</p>
+
+<p>
+  <strong>Cilindraje:</strong>
+  <%= @vehiculo.cilindraje %>
+</p>
+
+<p>
+  <strong>Toneladas:</strong>
+  <%= @vehiculo.toneladas %>
+</p>
+
+<p>
+  <strong>Propietario:</strong>
+  <%= @vehiculo.propietario %>
+</p>
+
+<p>
+  <strong>Poliza:</strong>
+  <%= @vehiculo.poliza %>
+</p>
+
+<%= link_to 'Edit', edit_vehiculo_path(@vehiculo) %> |
+<%= link_to 'Back', vehiculos_path %>

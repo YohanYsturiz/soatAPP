@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 5% !important;">
+    <table class="table table-condensed table-hover">
+      <h3> Vehiculo, Placa: <%= @coche.placa %> </h3>
+      <thead>
+        <tr class="table-primary">
+          <th scope="col">Placa</th>
+          <th scope="col">Clase</th>
+          <th scope="col">Sub-tipo</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Numero Pasajero</th>
+          <th scope="col">Cilindraje</th>
+          <th scope="col">Toneladas</th>
+          <th scope="col">Propietario</th>
+          <th scope="col">Poliza</th>
+          <th scope="col">Tomador</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @coche.placa %></th>
+          <td> <%= @coche.clase %></td>
+          <td><%= @coche.subtipo %></td>
+          <td><%= @coche.edad %></td>
+          <td><%= @coche.numero_pasajero %></td>
+          <td><%= @coche.cilindraje %></td>
+          <td><%= @coche.toneladas %></td>
+          <td><%= @coche.propietario %></td>
+          <td><%= @coche.poliza %></td>
+          <td><%= @coche.user %></td>
+        </tr>
+      </tbody>
+    </table>
+    <%= link_to 'Editar', edit_coch_path(@coche) , class: "btn btn-success" %>
+    <%= link_to 'Regresar', coches_path, class: "btn btn-success" %>
+  </div>
+</div>

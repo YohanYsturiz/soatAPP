@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title></title>        
+    <%= wicked_pdf_stylesheet_link_tag 'application' %>
+    <meta charset="utf-8">
+</head>
+<body>
+    <table class="table table-condensed">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">CLASIFICACION</th>
+          <th scope="col">SUBTIPO</th>
+          <th scope="col">T.COMERCIAL</th>
+          <th scope="col">PRIMA</th>
+          <th scope="col">CONTRIBUCION</th>
+          <th scope="col">SUBTOTAL</th>
+          <th scope="col">RUNT</th>
+          <th scope="col">TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row"><%= @rate.classification.descripcion %></th>
+          <th scope="row"><%= @rate.typeclassification.descripcion %></th>
+          <th scope="row"><%= @rate.tasa_comercial %></th>
+          <th scope="row"><%= @rate.value_prima %></th>
+          <th scope="row"><%= @rate.contribucion %></th>
+          <th scope="row"><%= @rate.subtotal %></th>
+          <th scope="row"><%= @rate.runt %></th>
+          <th scope="row"><%= @rate.total %></th>
+        </tr>
+      </tbody>
+    </table>
+</body>    
+</html>
