@@ -20,10 +20,13 @@ Rails.application.routes.draw do
   post "user" => "user#edit"
   
   get 'coche/index'
+  
+  get 'coche/show_one' => "coches#show_one"
 
   get "subtipo_type/:clase/subtipo" => "application#subtipos", :as => "subtipo", :format => :json
 
 
+  get 'admin' => "main#unregistered" 
 
   # get 'main/home'
   # ruta que inicia por defecto cuando se inicia el servidor 
@@ -32,16 +35,21 @@ Rails.application.routes.draw do
 
   devise_for :users
   
-  authenticated :user do
+  #authenticated :user do
       resources :coches
       resources :vehiculos
       resources :rates
-      root 'main#home', as: :authenticated_root
+      #root 'main#home', as: :authenticated_root
+  #end
+  
+  authenticated :user do
+    root 'coches#index', as: :coches_all
   end
   
-  unauthenticated :user do
-      root 'main#unregistered', as: :unauthenticated_root
-  end
+  #unauthenticated :user do
+      root 'main#home', as: :authenticated_root
+      #root 'main#unregistered', as: :unauthenticated_root
+  #end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

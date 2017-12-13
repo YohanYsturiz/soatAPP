@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208194350) do
+ActiveRecord::Schema.define(version: 20171213152155) do
 
   create_table "ages", force: :cascade do |t|
     t.integer  "id_ages"
@@ -38,11 +38,27 @@ ActiveRecord::Schema.define(version: 20171208194350) do
     t.string   "propietario"
     t.string   "poliza"
     t.integer  "users_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "tipo_documento"
+    t.integer  "numero_documento"
+    t.string   "nombre_tomador"
+    t.string   "apellido_tomador"
+    t.string   "email_tomador"
+    t.integer  "telefono_tomador"
+    t.string   "pago_poliza"
   end
 
   add_index "coches", ["users_id"], name: "index_coches_on_users_id"
+
+  create_table "coverages", force: :cascade do |t|
+    t.integer  "gasto_funerario"
+    t.integer  "gasto_medico"
+    t.integer  "inc_permanente"
+    t.string   "gasto_transporte"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false

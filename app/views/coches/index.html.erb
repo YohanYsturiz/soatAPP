@@ -1,22 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <div class="container">
-  <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 10% !important;">
-    <h4>Coches Registrados</h4>
+  <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 2% !important;">
+    <h4>Polizas Vendidas</h4>
       <table class="table table-condensed table-hover">
         <thead>
           <tr class="table-primary">
             <th>Placa</th>
             <th>Clase</th>
-            <th>Subtipo</th>
-            <th>Edad</th>
-            <th>Pasajeros</th>
-            <th>Cilindraje</th>
-            <th>Toneladas</th>
+            <th>Fecha Vigencia</th>
             <th>Propietario</th>
-            <th>Poliza</th>
-            <th>Users</th>
-            <th colspan="3"></th>
+            <th>Valor Prima</th>
+            <th>Contribución</th>
+            <th>runt</th>
+            <th>Subtotal</th>
+            <th>Total</th>
+            <th colspan="2"></th>
           </tr>
         </thead>
       
@@ -24,22 +21,20 @@
           <% @coches.each do |coche| %>
             <tr>
               <td><%= coche.placa %></td>
-              <td><%= coche.clase %></td>
-              <td><%= coche.subtipo %></td>
-              <td><%= coche.edad %></td>
-              <td><%= coche.numero_pasajero %></td>
-              <td><%= coche.cilindraje %></td>
-              <td><%= coche.toneladas %></td>
+              <td><%= coche.descripcion %></td>
+              <td class="col"><%= coche.created_at.strftime("%d-%m-%Y") %></td>
               <td><%= coche.propietario %></td>
-              <td><%= coche.poliza %></td>
-              <td><%= coche.user %></td>
+              <td><%= coche.value_prima %></td>
+              <td><%= coche.contribucion %></td>
+              <td><%= coche.runt %></td>
+              <td><%= coche.subtotal %></td>
+              <td><%= coche.total %></td>
               <td><%= link_to 'Consultar', coche, class: "btn btn-primary btn-sm" %></td>
-              <td><%= link_to 'Editar', edit_coch_path(coche), class: "btn btn-warning btn-sm" %></td>
               <td><%= link_to 'Eliminar', coche, method: :delete, data: { confirm: '¿Seguro que desea eliminar?' }, class: "btn btn-danger btn-sm" %></td>
             </tr>
           <% end %>
         </tbody>
       </table> 
-    <%= link_to 'Registrar Vehiculo', new_coch_path, class: "btn btn-primary" %>
+    <%#= link_to 'Registrar Vehiculo', new_coch_path, class: "btn btn-primary" %>
   </div>
 </div>

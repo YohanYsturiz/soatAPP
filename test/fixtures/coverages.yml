@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gasto_funerario: 
+  gasto_medico: 
+  inc_permanente: 
+  gasto_transporte: MyString
+
+two:
+  gasto_funerario: 
+  gasto_medico: 
+  inc_permanente: 
+  gasto_transporte: MyString

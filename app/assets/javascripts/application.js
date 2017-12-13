@@ -19,10 +19,10 @@
 
 function cotiza() {
     
-    var clase = document.getElementById('clase').value
-    var subtipo = document.getElementById('subtipo').value
-    
-    window.open('/rates/cotizacion?clase=' + clase + "&subtipo=" + subtipo ,'nueva','top=100,left=100,width=400,height=300,status=yes,scrollbars=yes')
+    var clase = document.getElementById('id_registro').value
+    var placa = document.getElementById('placa_vehiculo').value
+
+    window.location = '/rates/cotizacion?id=' + clase + "&placa=" + placa
 
     console.log('envio')
     

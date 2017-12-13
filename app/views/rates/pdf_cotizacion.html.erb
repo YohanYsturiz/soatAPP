@@ -5,31 +5,92 @@
     <meta charset="utf-8">
 </head>
 <body>
-    <table class="table table-condensed">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">CLASIFICACION</th>
-          <th scope="col">SUBTIPO</th>
-          <th scope="col">T.COMERCIAL</th>
-          <th scope="col">PRIMA</th>
-          <th scope="col">CONTRIBUCION</th>
-          <th scope="col">SUBTOTAL</th>
-          <th scope="col">RUNT</th>
-          <th scope="col">TOTAL</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"><%= @rate.classification.descripcion %></th>
-          <th scope="row"><%= @rate.typeclassification.descripcion %></th>
-          <th scope="row"><%= @rate.tasa_comercial %></th>
-          <th scope="row"><%= @rate.value_prima %></th>
-          <th scope="row"><%= @rate.contribucion %></th>
-          <th scope="row"><%= @rate.subtotal %></th>
-          <th scope="row"><%= @rate.runt %></th>
-          <th scope="row"><%= @rate.total %></th>
-        </tr>
-      </tbody>
-    </table>
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4> Resumen de compra Vehiculo, Placa: <%= @rate.placa %> </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-condensed table-hover">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Placa</th>
+                  <th scope="col">Clase</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Total Poliza</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= @rate.placa %></th>
+                  <td> <%= @rate.descripcion %></td>
+                  <td><%= @rate.propietario %></td>
+                  <td><%= @rate.total %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4>Informacion de la Poliza</h4>
+        </div>
+        <div class="card-body">
+           <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID poliza</th>
+                  <th scope="col">Prima</th>
+                  <th scope="col">Contribucion Fusyga</th>
+                  <th scope="col">Runt</th>
+                  <th scope="col">SubTotal</th>
+                  <th scope="col">Total a pagar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= @rate.id_rates %></th>
+                  <td><%= @rate.value_prima %></td>
+                  <td><%= @rate.contribucion %></td>
+                  <td><%= @rate.runt %></td>
+                  <td><%= @rate.subtotal %></td>
+                  <td><%= @rate.total %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4>Coberturas de la Poliza</h4>
+        </div>
+        <div class="card-body">
+           <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Gastos funerarios</th>
+                  <th scope="col">Gastos medicos</th>
+                  <th scope="col">Incapacidad Permanente</th>
+                  <th scope="col">Gastos de Transporte</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>750 SLMDV</td>
+                  <td>800 SLMDV</td>
+                  <td>180 SLMDV</td>
+                  <td>10 SLMDV</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
 </body>    
 </html>

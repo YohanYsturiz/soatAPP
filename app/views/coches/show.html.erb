@@ -1,38 +1,206 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <table class="table table-condensed table-hover">
-      <h3> Vehiculo, Placa: <%= @coche.placa %> </h3>
-      <thead>
-        <tr class="table-primary">
-          <th scope="col">Placa</th>
-          <th scope="col">Clase</th>
-          <th scope="col">Sub-tipo</th>
-          <th scope="col">Edad</th>
-          <th scope="col">Numero Pasajero</th>
-          <th scope="col">Cilindraje</th>
-          <th scope="col">Toneladas</th>
-          <th scope="col">Propietario</th>
-          <th scope="col">Poliza</th>
-          <th scope="col">Tomador</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row"><%= @coche.placa %></th>
-          <td> <%= @coche.clase %></td>
-          <td><%= @coche.subtipo %></td>
-          <td><%= @coche.edad %></td>
-          <td><%= @coche.numero_pasajero %></td>
-          <td><%= @coche.cilindraje %></td>
-          <td><%= @coche.toneladas %></td>
-          <td><%= @coche.propietario %></td>
-          <td><%= @coche.poliza %></td>
-          <td><%= @coche.user %></td>
-        </tr>
-      </tbody>
-    </table>
-    <%= link_to 'Editar', edit_coch_path(@coche) , class: "btn btn-success" %>
-    <%= link_to 'Regresar', coches_path, class: "btn btn-success" %>
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4> Resumen de compra Vehiculo, Placa: <%= @coche.placa %> </h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-condensed table-hover">
+              <thead>
+                <tr class="table-primary">
+                  <th scope="col">Placa</th>
+                  <th scope="col">Clase</th>
+                  <th scope="col">Propietario</th>
+                  <th scope="col">Total Poliza</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= @coche.placa %></th>
+                  <td> <%= @coche.descripcion %></td>
+                  <td><%= @coche.propietario %></td>
+                  <td><%= @coche.total %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4>Información de la Poliza</h4>
+        </div>
+        <div class="card-body">
+           <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">ID poliza</th>
+                  <th scope="col">Prima</th>
+                  <th scope="col">Contribución Fusyga</th>
+                  <th scope="col">Runt</th>
+                  <th scope="col">SubTotal</th>
+                  <th scope="col">Total a pagar</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><%= @coche.id_rates %></th>
+                  <td><%= @coche.value_prima %></td>
+                  <td><%= @coche.contribucion %></td>
+                  <td><%= @coche.runt %></td>
+                  <td><%= @coche.subtotal %></td>
+                  <td><%= @coche.total %></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+    
+    <div class="margin-card">
+      <div class="card row">
+        <div class="card-header bg-success text-white">
+          <h4>Coberturas de la Poliza</h4>
+        </div>
+        <div class="card-body">
+           <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Gastos funerarios</th>
+                  <th scope="col">Gastos medicos</th>
+                  <th scope="col">Incapacidad Permanente</th>
+                  <th scope="col">Gastos de Transporte</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>750 SLMDV</td>
+                  <td>800 SLMDV</td>
+                  <td>180 SLMDV</td>
+                  <td>10 SLMDV</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+
+    
+    
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+      Pagar poliza
+    </button>
+    <%#= link_to 'Editar', edit_coch_path(@coche) , class: "btn btn-success" %>
+    <%#= link_to 'Regresar', coches_path, class: "btn btn-success" %>
+    
+</div>
+    <!------ Ventana Modal pago de la poliza  ------->
+        <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ingrese los datos del tomador</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <%= form_for(@coche) do |f| %>
+                <% if @coche.errors.any? %>
+                  <div id="error_explanation">
+                    <h2><%= pluralize(@coche.errors.count, "error") %> prohibited this coch from being saved:</h2>
+              
+                    <ul>
+                    <% @coche.errors.full_messages.each do |message| %>
+                      <li><%= message %></li>
+                    <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <%= f.label :tipo_documento %><br>
+                     <select name="coche[tipo_documento]" class="form-control">
+                        <option value="cedula" selected="selected">Cedula</option>
+                        <option value="pasaporte">Pasaporte</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <%= f.label :numero_documento %><br>
+                    <input type="number" class="form-control" name="coche[numero_documento]" id="numero_documento" maxlength="10" size="10" required>
+                  </div>
+                </div>                
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <%= f.label :nombre_tomador %><br>
+                      <input type="text" class="form-control" name="coche[nombre_tomador]" id="nombre_tomador" required>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <%= f.label :apellido_tomador %><br>
+                    <input type="text" class="form-control" name="coche[apellido_tomador]" id="apellido_tomador" required>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <%= f.label :email_tomador %><br>
+                      <input type="email" class="form-control" name="coche[email_tomador]" id="email_tomador" required>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <%= f.label :telefono %><br>
+                    <input type="number" class="form-control" name="coche[telefono]" id="telefono" required>
+                    <input type="hidden" class="form-control" name="coche[pago_poliza]" id="pago_poliza", value="SI">
+                    <%= f.hidden_field :clase, :value => @coche.clase, class: "form-control" %>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ingrese los datos de la tarjeta de credito</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="numero_tarjeta">Numero tarjeta credito:</label>
+                  <input type="number" class="form-control" name="numero_tarjeta" id="numero_tarjeta" maxlength="7" size="15" required>
+                </div>
+                <div class="form-group">
+                  <label for="nombre_titular">Nombre Titular:</label>
+                  <input type="text" class="form-control" name="nombre_titular" id="nombre_titular" maxlength="20" required>
+                </div>
+                <div class="form-group">
+                  <label for="fecha_vencimiento">Fecha Vencimiento:</label>
+                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" maxlength="7" required>
+                </div>
+                <div class="form-group">
+                  <label for="codigo_seguridad">Codigo Seguridad (CVV):</label>
+                  <input type="number" class="form-control" name="codigo_seguridad" id="codigo_seguridad" maxlength="7" required>
+                </div>
+                <div class="form-group">
+                  <label for="cuotas">Numero de Cuotas:</label>
+                  <input type="number" class="form-control" name="cuotas" id="cuotas" maxlength="7" required>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <%= f.submit "Guardar", class: "btn btn-success" %>
+            <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <%#= link_to "Cotización", {:controller => "rates", :action => "cotizacion"}, :method => "post") , class: "navbar-brand"  %>
+          <%#= link_to 'Cotizacion', {:controller => 'rates', :action => 'cotizacion', :clase => "1"}, method: 'post', :class=>'link_styling', class: "btn btn-success", :onclick => 'cotiza();'  %>
+        </div>    
+    
   </div>
 </div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="col-md-10 col-sm-10 justify-content-md-center">
+        <div class="margin-card">
+          <div class="card row">
+            <div class="card-header bg-success text-white">
+              <h4>Compra realizada exitosamente</h4>
+            </div>
+            <div class="card-body">
+               <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID registro</th>
+                      <th scope="col">Placa</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <input type="text" class="form-control" name="coche[id]" id="id_registro" value="<%= params[:id]%>" readonly>
+                      </td>
+                      <td>
+                        <input type="text" class="form-control" name="coche[placa]" id="placa_vehiculo" value="<%= params[:placa]%>" readonly>
+                      </td>
+                  </tbody>
+                </table>
+                <div class="form-group" style="float: right !important;">
+                    <a href="#" onclick="cotiza();" class="btn btn-success">IMPRIMIR PDF - RESUMEN</a>
+                </div>
+                <%= link_to 'Finalizar', authenticated_root_path, class: "btn btn-success" %>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>

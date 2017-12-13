@@ -37,7 +37,7 @@ class RatesController < ApplicationController
     @respuesta = false;
     #abort(params[:clase])
       if request.get?
-        @rate = Rate.joins(:classification, :typeclassification).find_by(classification_id: params[:clase], typeclassification_id: params[:subtipo])
+        @rate = Coche.select('coches.id', 'coches.placa', 'coches.propietario', 'coches.edad', 'coches.clase', 'rates.runt', 'classifications.descripcion', 'rates.value_prima', 'rates.contribucion', 'rates.subtotal', 'rates.total', 'rates.id_rates').joins("INNER JOIN rates ON rates.classification_id = coches.clase").joins("INNER JOIN classifications ON classifications.id_classification = coches.clase").find(params[:id])
         #Category.joins(:products).where(products: {quantity: 0})
         if @rate
           #respond_to do |format|

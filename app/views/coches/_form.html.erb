@@ -20,23 +20,23 @@
             <% end %>
             <div class="form-group">
               <%= f.label :placa %><br>
-              <%= f.text_field :placa, class: "form-control" %>
+              <%= f.text_field :placa, :value => params[:placa], class: "form-control" %>
             </div>
             <div class="form-group">
               <%= f.label :clase %><br>
-              <%#= f.collection_select :clase, Classification.all, :id_classification, :descripcion, {prompt: "Seleccione una clase"}, {class: "form-control"} %>
-              <%= select_tag :clase, options_from_collection_for_select(Classification.all, "id_classification", "descripcion"), :prompt => "selecciona una clase", class: "form-control" %>
+              <%#= f.collection_select "clase", Classification.all, :id_classification, :descripcion, {prompt: "Seleccione una clase"}, {class: "form-control"} %>
+              <%= select_tag "coche[clase]", options_from_collection_for_select(Classification.all, :id_classification, :descripcion), :prompt => "seleccionar una clase", class: "form-control"%>
             </div>
             <div class="form-group">
               <%= f.label :subtipo %><br>
               <%#= f.collection_select :subtipo, Typeclassification.all, :id_type, :descripcion, {prompt: "seleccione una sub-clase"}, {class: "form-control"} %>
               
-              <%= select_tag :subtipo, options_from_collection_for_select([], "type_id", "descripcion"),
+              <%= select_tag "coche[subtipo]", options_from_collection_for_select([], :type_id, :descripcion),
                   "data-option-dependent" => true,
-                  "data-option-observed" => "clase",
+                  "data-option-observed" => "coche_clase",
                   "data-option-url" => "/subtipo_type/:clase:/subtipo.json",
-                  "data-option-key-method" => :descripcion,
-                  "data-option-value-method" => :type_id, class: "form-control"  %>
+                  "data-option-key-method" => :type_id,
+                  "data-option-value-method" => :descripcion, class: "form-control"  %>
             </div>
             <%#= observe_field 'clase', :url => @options.merge(:controller => '/rates', :action => 'combo_subtipo'), :update => 'subtipo', :with => 'combo_clase_id' %> 
             <div class="form-group">
@@ -44,84 +44,15 @@
               <%= f.collection_select :edad, Age.all, :id_ages, :descripcion , {prompt: "Seleccione una edad"}, {class: "form-control"} %>
             </div>
             <div>
-              <%#= f.label :numero_pasajero %><br>
-              <%= f.hidden_field :numero_pasajero, class: "form-control" %>
-            </div>
-            <div>
-              <%#= f.label :cilindraje %><br>
-              <%= f.hidden_field :cilindraje, class: "form-control" %>
-            </div>
-            <div>
-              <%#= f.label :toneladas %><br>
-              <%= f.hidden_field :toneladas, class: "form-control" %>
-            </div>
-            <div>
               <%= f.label :propietario %><br>
               <%= f.text_field :propietario, class: "form-control" %>
             </div>
-            <div>
-              <%#= f.label :poliza %><br>
-              <%= f.hidden_field :poliza, class: "form-control" %>
-            </div>
             <div class="form-group">
               <%#= f.label :users_id %><br>
-              <%= f.hidden_field :users_id, :value =>  current_user.id,  class: "form-control" %>
-              <%= f.hidden_field :email_user, :value => current_user.email,  class: "form-control" %>
+              <%#= f.hidden_field :users_id, :value =>  current_user.id,  class: "form-control" %>
+              <%#= f.hidden_field :email_user, :value => current_user.email,  class: "form-control" %>
             </div>
-            <div class="form-group" style="float: right !important;">
-                <a href="#" onclick="cotiza();" class="btn btn-success">Cotizacion</a>
-            </div>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-              Pagar poliza
-            </button>
-            
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ingrese los siguientes datos</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="numero_tarjeta">Numero tarjeta credito:</label>
-                      <input type="number" class="form-control" name="numero_tarjeta" id="numero_tarjeta" maxlength="7" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="nombre_titular">Nombre Titular:</label>
-                      <input type="text" class="form-control" name="nombre_titular" id="nombre_titular" maxlength="20" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="fecha_vencimiento">Fecha Vencimiento:</label>
-                      <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" maxlength="7" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="codigo_seguridad">Codigo Seguridad (CVV):</label>
-                      <input type="number" class="form-control" name="codigo_seguridad" id="codigo_seguridad" maxlength="7" required>
-                    </div>
-                    <div class="form-group">
-                      <label for="cuotas">Numero de Cuotas:</label>
-                      <input type="number" class="form-control" name="cuotas" id="cuotas" maxlength="7" required>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    <%= f.submit "Guardar", class: "btn btn-success" %>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%#= f.submit "Guardar", class: "btn btn-success" %>
-            </div>
-            <div class="form-group">
-              <%#= link_to "Cotización", {:controller => "rates", :action => "cotizacion"}, :method => "post") , class: "navbar-brand"  %>
-              <%#= link_to 'Cotizacion', {:controller => 'rates', :action => 'cotizacion', :clase => "1"}, method: 'post', :class=>'link_styling', class: "btn btn-success", :onclick => 'cotiza();'  %>
-            </div>
+            <%= f.submit "Guardar", class: "btn btn-success" %>
           <% end %>
         </div>
       </div>
@@ -156,9 +87,11 @@ $('select[data-option-dependent=true]').each(function (i) {
           type : 'GET',
           dataType:'json',
           success : function(data){
-            for (i in data){
+            //console.log('prueba= ' + data.id_type)
+            //for (i in data){
+              console.log(data.id_type + "-" + data.descripcion )
                observer.append($('<option>').attr('value', data.id_type).text(data.descripcion));
-            }
+            //}
           },
           error : function(xhr, status) {
             alert('Disculpe, existió un problema');

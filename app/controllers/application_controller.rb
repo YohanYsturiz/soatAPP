@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
 
   def subtipos
-    tipo_subtipo = Rate.joins(:classification, :typeclassification).find_by(classification_id: params[:clase])
+    tipo_subtipo = Rate.joins(:classification, :typeclassification).find_by(classification_id: params[:clase]) #where("phones.area_code IN (?) AND phones.number IN (?)", area_codes, numbers)
     respond_to do |format|
     format.json { render :json => tipo_subtipo.typeclassification }
     end
